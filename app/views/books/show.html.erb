@@ -33,22 +33,30 @@
           <td>コメント数:<%= @book.book_comments.count %></td>
         </tr>
       </table>
-        <div class="comment-group">
+        <table class='comment-table'>
           <% @book.book_comments.each do |book_comment| %>
-           <%= image_tag book_comment.user.get_profile_image(50,50) %>
+          <tr>
+          <td>
+           <%= image_tag book_comment.user.get_profile_image, size: "50x50" %><br>
            <%= book_comment.user.name %>
-           <%= book_comment.comment %>
-           <% if book_comment.user == current_user %>
-            <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger" %>
-           <% end %>
+          </td>
+          <td><%= book_comment.comment %></td>
+          <% if book_comment.user == current_user %>
+          <td><%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
           <% end %>
-        </div>
-          <%= form_with model: [@book, @book_comment] do |f| %>
+          </tr>
+          <% end %>
+        </table>
+        <table class='form-table'>
+          <%= form_with model: [@book, @book_comment], class: "form-horizontal" do |f| %>
           <div class="form-group">
-           <%= f.text_area :comment, rows: '5' %><br>
+           <%= f.text_area :comment, rows: '5' %>
+          </div>
+          <div class="form-group">
            <%= f.submit "送信" %>
           </div>
           <% end %>
+        </table>
     </div>
   </div>
 </div>
