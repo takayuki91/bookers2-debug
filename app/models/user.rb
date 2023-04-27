@@ -11,10 +11,12 @@ class User < ApplicationRecord
   
   # フォローする側からのhas_manyであることをforeign_keyで明示
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  # フォローされる側からのhas_manyであることをforeign_keyで明示
-  has_many :reverse_of_relationships, class_name: "Ralationship", foreign_key: "followed_id", dependent: :destroy
   # 全員分のデータを取ってくるため
   has_many :followers, through: :relationships, source: :followed
+  
+  # フォローされる側からのhas_manyであることをforeign_keyで明示
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  # 全員分のデータを取ってくるため
   has_many :followeds, through: :reverse_of_relationships, source: :follower
   
   # あるユーザーがフォローされているか否かを判定するメソッドを定義
