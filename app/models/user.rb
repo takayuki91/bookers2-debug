@@ -19,7 +19,7 @@ class User < ApplicationRecord
   # 全員分のデータを取ってくるため
   has_many :followeds, through: :reverse_of_relationships, source: :follower
   
-  # あるユーザーがフォローされているか否かを判定するメソッドを定義
+  # あるユーザーが(user)にフォローされているか否かを判定するメソッドを定義
   def is_followed_by?(user)
     reverse_of_relationships.find_by(follower_id: user.id).present?
   end

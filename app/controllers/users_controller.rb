@@ -11,19 +11,19 @@ class UsersController < ApplicationController
     @users = User.all
     @book = Book.new
     # current_user以外の全idを取ってくる
-    @relationshipusers = User.where.not(id: current_user.id)
+    # @relationshipusers = User.where.not(id: current_user.id)
   end
   
   # あるユーザーがフォローしている人を全取得
   def followers
-    user = User.find(params[:id])
-    @users = user.followers
+    @user = User.find(params[:id])
+    @users = @user.followers
   end
   
   # あるユーザーがフォローされている人を全取得
   def followeds
-    user = User.find(params[:id])
-    @users = user.followeds
+    @user = User.find(params[:id])
+    @users = @user.followeds
   end
 
   def edit
