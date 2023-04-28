@@ -4,6 +4,8 @@ class SearchesController < ApplicationController
   
   def  search
     @range = params[:range]
+    # 検索ワードをビューで表示するため
+    @search_keyword = params[:word]
     
     if @range == "User"
       @users = User.looks(params[:search], params[:word])
