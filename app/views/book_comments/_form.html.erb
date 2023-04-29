@@ -1,0 +1,10 @@
+<%= form_with model: [book, book_comment], class: "form-horizontal" do |f| %>
+  <table class='form-table'>
+    <div class="form-group">
+      <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "w-100" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "送信" %>
+    </div>
+  </table>
+<% end %>
