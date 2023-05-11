@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:update]
+  before_action :ensure_guest_user, only: [:edit]
 
   def show
     @user = User.find(params[:id])
@@ -13,13 +14,13 @@ class UsersController < ApplicationController
     # current_user以外の全idを取ってくる
     # @relationshipusers = User.where.not(id: current_user.id)
   end
-  
+
   # あるユーザーがフォローしている人を全取得
   def followers
     @user = User.find(params[:id])
     @users = @user.followers
   end
-  
+
   # あるユーザーがフォローされている人を全取得
   def followeds
     @user = User.find(params[:id])
@@ -54,4 +55,13 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user.id)
     end
   end
+
+  # ゲストユーザーへ
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "guestuser"
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
+  end
+
 end
