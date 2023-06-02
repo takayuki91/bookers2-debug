@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get :followers, on: :member
     get :followeds, on: :member
   end
+  
+  resources :groups, only: [:index, :show, :edit, :create, :update, :new, :show]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
