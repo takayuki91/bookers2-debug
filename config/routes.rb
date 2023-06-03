@@ -26,8 +26,12 @@ Rails.application.routes.draw do
     get :followeds, on: :member
   end
 
+  #resources :groups do
+    #get "join" => "groups#join"
+  #end
+
   resources :groups do
-    get "join" => "groups#join"
+    resource :group_users, only: [:create, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

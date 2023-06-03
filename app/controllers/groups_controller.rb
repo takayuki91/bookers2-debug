@@ -1,7 +1,11 @@
 class GroupsController < ApplicationController
-  
+
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
+
+  def new
+    @group = Group.new
+  end
 
   def index
     @book = Book.new
@@ -12,17 +16,13 @@ class GroupsController < ApplicationController
     @book = Book.new
     @group = Group.find(params[:id])
   end
-  
-  # グループに追加するアクション
-  def join
-    @group = Group.find(params[:group_id])
-    @group.users << current_user
-    redirect_to groups_path
-  end
 
-  def new
-    @group = Group.new
-  end
+  # グループに追加するアクション
+  # def join
+  #   @group = Group.find(params[:group_id])
+  #   @group.users << current_user
+  #   redirect_to groups_path
+  # end
 
   def create
     @group = Group.new(group_params)
@@ -46,10 +46,10 @@ class GroupsController < ApplicationController
       render "edit"
     end
   end
-  
+
   def destroy
     @group = Group.find(params[:id])
-    @group.users.delete(current_user)
+    @group.destroy
     redirect_to groups_path
   end
 
@@ -65,5 +65,5 @@ class GroupsController < ApplicationController
       redirect_to groups_path
     end
   end
-  
+
 end
