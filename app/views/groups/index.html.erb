@@ -7,6 +7,7 @@
             <th>グループ名</th>
             <th>紹介文</th>
             <th>メンバー数</th>
+            <th colspan="2"></th>
           </tr>
         </thead>
         <tbody>
@@ -19,6 +20,11 @@
               <td>
                 <% if group.owner_id == current_user.id %>
                   <%= link_to 'Edit', edit_group_path(group), class: "btn btn-sm btn-success" %>
+                <% end %>
+              </td>
+              <td>
+                <% if group.owner_id == current_user.id %>
+                  <%= link_to 'Destroy', group_path(group), method: :delete, class: "btn btn-sm btn-danger" %>
                 <% end %>
               </td>
             </tr>
