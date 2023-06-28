@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+
+.title {
+  display: flex;
+  overflow: hidden;
+  color: #FF8D3F;
+  font-family: 'Rampart One', cursive;
+
+  span {
+    display: block;
+    transform: translate(0, 105%);
+    transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+  }
+
+  &.-visible span {
+    transform: translate(0, 0);
+  }
+
+  $transition-delay: 0.06s;
+  @for $i from 2 through 20 {
+    span:nth-child(#{$i}) {
+      transition-delay: $transition-delay;
+      $transition-delay: $transition-delay + 0.06s;
+    }
+  }
+}
