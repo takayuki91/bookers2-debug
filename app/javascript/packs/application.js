@@ -7,14 +7,15 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-//
-import $ from 'jquery';
-import "jquery"
+//追加
+// import $ from 'jquery';
+// import "jquery"
 import "popper.js"
 import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all';
 
 import "../stylesheets/application"
+// 追加
 import "../stylesheets/about"
 import "../stylesheets/pagetop"
 
