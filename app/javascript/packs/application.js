@@ -19,6 +19,8 @@ import "../stylesheets/application"
 import "../stylesheets/about"
 import "../stylesheets/pagetop"
 
+window.$ = window.jQuery = require('jquery');
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
