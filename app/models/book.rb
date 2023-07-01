@@ -6,6 +6,11 @@ class Book < ApplicationRecord
 
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
+  
+  # レコードを特定の順序で取得
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :star_count, -> {order(star: :desc)}
 
   # favorited_by?メソッド
   def favorited_by?(user)
