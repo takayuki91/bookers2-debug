@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
   # 検索ボタンが押された時
   get "search" => "searches#search"
+  
+  # タグ検索
+  get 'tagsearches/search', to: 'tagsearches#search'
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update]do
     resource :favorites, only: [:create, :destroy]
