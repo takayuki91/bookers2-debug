@@ -56,7 +56,14 @@
   </nav>
   <nav class="navbar navbar-expand-lg navbar-white bg-white">
     <div class="container justify-content-center">
-      <%= render 'searches/search' %>
+      <% if user_signed_in? %>
+        <div class="col-6">
+          <%= render 'searches/search' %>
+        </div>
+        <div class="col-6">
+          <%= render 'tagsearches/tagsearch' %>
+        </div>
+      <% end %>
     </div>
   </nav>
 </header>

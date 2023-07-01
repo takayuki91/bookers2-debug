@@ -7,6 +7,8 @@ class Book < ApplicationRecord
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
   
+  validates :category, presence: true
+  
   # レコードを特定の順序で取得
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
