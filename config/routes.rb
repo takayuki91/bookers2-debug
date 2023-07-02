@@ -28,10 +28,10 @@ Rails.application.routes.draw do
     get :followers, on: :member
     get :followeds, on: :member
   end
-
-  #resources :groups do
-    #get "join" => "groups#join"
-  #end
+  
+  # DM
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create,:show]
 
   resources :groups do
     resource :group_users, only: [:create, :destroy]
