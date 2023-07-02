@@ -19,8 +19,6 @@
 </table>
 
 <!--ゲストユーザーがプロフィール編集不可に-->
-
-
 <div class='row'>
   <% if user == current_user && user.name != "guestuser" %>
     <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block" do %>
@@ -37,6 +35,23 @@
           <button class="btn btn-success">フォローする</button>
         <% end %>
       <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class='row mt-2'>
+  <% unless user.id == current_user.id %>
+    <% if (current_user.is_followed_by? user) && (user.is_followed_by? current_user)  %>
+    <% if @isRoom == true %>
+      <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+    <% else %>
+      <%= form_with(model: @room) do |f| %>
+        <%= f.fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, value: user.id %>
+        <% end %>
+        <%= f.submit "チャットを始める", class: "btn btn-primary btn-sm user-show-chat" %>
+      <% end %>
+    <% end %>
     <% end %>
   <% end %>
 </div>

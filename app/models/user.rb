@@ -28,6 +28,11 @@ class User < ApplicationRecord
   # フォローされる側からのhas_many # 全員分のデータ取得
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followeds, through: :reverse_of_relationships, source: :follower
+  
+  # DM関係
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+  
   # あるユーザーが(user)にフォローされているかを判定するメソッド定義
   def is_followed_by?(user)
     reverse_of_relationships.find_by(follower_id: user.id).present?
