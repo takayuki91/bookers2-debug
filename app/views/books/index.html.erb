@@ -11,6 +11,7 @@
       <%= link_to '新しい順', books_path(latest: "true") %>
       |<%= link_to '古い順', books_path(old: "true") %>
       |<%= link_to '評価の高い順', books_path(star_count: "true") %>
+      |<%= link_to '人気順', books_path(popular_books: "true") %>
       <%= render 'index', books: @books, book: @book %>
     </div>
   </div>
