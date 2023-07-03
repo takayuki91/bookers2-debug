@@ -42,15 +42,8 @@
 <div class='row mt-2'>
   <% unless user.id == current_user.id %>
     <% if current_user.is_followed_by?(user) && user.is_followed_by?(current_user) %>
-      <% if @isRoom == true %>
-        <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a></p>
-      <% else %>
-        <%= form_with(model: @room) do |f| %>
-          <%= f.fields_for :entry, @entry do |e| %>
-            <%= e.hidden_field :user_id, value: user.id %>
-          <% end %>
-          <%= f.submit "チャットを始める", class: "btn btn-primary btn-sm user-show-chat" %>
-        <% end %>
+      <% if current_user != @user %>
+        <%= link_to 'messageを始める', message_path(@user.id)%>
       <% end %>
     <% end %>
   <% end %>
