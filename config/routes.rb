@@ -30,8 +30,10 @@ Rails.application.routes.draw do
   end
   
   # DM
+  # resources :messages, only: [:create]
+  # resources :rooms, only: [:create,:show]
+  get 'message/:id' => 'messages#show', as: 'message'
   resources :messages, only: [:create]
-  resources :rooms, only: [:create,:show]
 
   resources :groups do
     resource :group_users, only: [:create, :destroy]
