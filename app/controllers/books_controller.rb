@@ -8,7 +8,14 @@ class BooksController < ApplicationController
     @user = @book.user
     @newbook = Book.new
     @book_comment = BookComment.new
-    # @posted_book_comment = BookComment.find(params[:user_id])
+    # 閲覧数をカウントする
+    if current_user.name != "guestuser"
+      unless Look.where(created_at: Time.zone.now.all_day)
+                 .find_by(user_id: current_user.id, book_id: @book.id)
+        current_user.looks
+                    .create(book_id: @book.id)
+      end
+    end
   end
 
   def index

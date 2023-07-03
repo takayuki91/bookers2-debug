@@ -25,6 +25,7 @@
         <td class="favorite-btn"><%= render "favorites/favorite-btn", book: book %></td>
         <td>コメント数:<%= book.book_comments.count %></td>
         <td><%= render "books/static_rate", book: book %></td>
+        <td><%= render partial: "books/look", locals: { book: book } %></td>
       </tr>
     <% end %>
   </tbody>
