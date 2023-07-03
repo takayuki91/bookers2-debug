@@ -1,0 +1,10 @@
+<% if current_user && book.user_has_look?(current_user) %>
+  <div class="text-danger">
+    閲覧数:<%= book.looks.count %>
+  </div>
+  
+<% else %>
+  <div class="text-dark">
+    閲覧数<%= book.looks.count %>
+  </div>
+<% end %>

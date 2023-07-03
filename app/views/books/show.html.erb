@@ -31,6 +31,7 @@
           <td id="comments_index_comments">
             <%= render "book_comments/index_comments", book: @book %>
           </td>
+          <td><%= render partial: "books/look", locals: { book: @book } %></td>
         </tr>
       </table>
 
