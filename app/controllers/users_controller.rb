@@ -6,35 +6,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
-    
-    # # DM関係
-    # @currentUserEntry = Entry.where(user_id: current_user.id)
-    # @userEntry = Entry.where(user_id: @user.id)
-    
-    # if @user.id == current_user.id
-    # else
-    #   @currentUserEntry.each do |cu|
-    #     @userEntry.each do |u|
-    #       if cu.room_id == u.room_id then
-    #         @isRoom = true
-    #         @roomId = cu.room_id
-    #       end
-    #     end
-    #   end
-    #   if @isRoom
-    #   else
-    #     @room = Room.new
-    #     @entry = Entry.new
-    #   end
-    # end
-    
+    # 投稿数カウント
+    @today_book =  @books.created_today
+    @yesterday_book = @books.created_yesterday
+    @this_week_book = @books.created_this_week
+    @last_week_book = @books.created_last_week
   end
 
   def index
     @users = User.all
     @book = Book.new
-    # current_user以外の全idを取ってくる
-    # @relationshipusers = User.where.not(id: current_user.id)
   end
 
   # あるユーザーがフォローしている人を全取得
