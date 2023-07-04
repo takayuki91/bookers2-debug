@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # 検索ボタンが押された時
   get "search" => "searches#search"
-  
+
   # タグ検索
   get 'tagsearches/search', to: 'tagsearches#search'
 
@@ -24,11 +24,12 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index,:show,:edit,:update]do
+    get "search_form" => "users#search_form"
     resource :relationships, only: [:create, :destroy]
     get :followers, on: :member
     get :followeds, on: :member
   end
-  
+
   # DM
   # resources :messages, only: [:create]
   # resources :rooms, only: [:create,:show]
