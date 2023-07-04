@@ -11,8 +11,6 @@
     <!--追加-->
     <%= javascript_pack_tag 'about', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'pagetop', 'data-turbolinks-track': 'reload' %>
-
-
   </head>
 
   <body>
@@ -22,6 +20,7 @@
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>
+    <!--chart.js-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </body>
 </html>

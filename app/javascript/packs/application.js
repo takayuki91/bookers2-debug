@@ -5,7 +5,7 @@
 
 import Rails from "@rails/ujs"
 // chart.jsでコメントアウト
-// import Turbolinks from "turbolinks"
+import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
@@ -24,7 +24,7 @@ import "../stylesheets/pagetop"
 
 Rails.start()
 // chart.jsでコメントアウト
-// Turbolinks.start()
+Turbolinks.start()
 ActiveStorage.start()
 
 window.$ = window.jQuery = require('jquery');
