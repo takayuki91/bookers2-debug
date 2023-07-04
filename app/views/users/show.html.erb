@@ -87,50 +87,59 @@
 
         <!--chart.js-->
         <canvas id="myLineChart"></canvas>
-          <script>
-            $(document).on('turbolinks:load', function() {
-              var ctx = document.getElementById("myLineChart");
-              var myLineChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                  labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
-                  datasets: [
-                    {
-                      label: '投稿した本の数',
-                      data: [
-                        <%= @user.books.created_days_ago(6).count %>,
-                        <%= @user.books.created_days_ago(5).count %>,
-                        <%= @user.books.created_days_ago(4).count %>,
-                        <%= @user.books.created_days_ago(3).count %>,
-                        <%= @user.books.created_days_ago(2).count %>,
-                        <%= @user.books.created_days_ago(1).count %>,
-                        <%= @user.books.created_today.count %>
-                      ],
-                      borderColor: "rgba(0,0,255,1)",
-                      backgroundColor: "rgba(0,0,0,0)",
-                      tension: 0.4
-                    }
-                  ],
+        <script>
+
+        var myLineChart;
+
+          $(document).on('turbolinks:load', function() {
+            var ctx = document.getElementById("myLineChart");
+
+            // チャートが既に作成されているかどうかを確認して破棄
+            if (myLineChart) {
+              myLineChart.destroy();
+            }
+
+            var myLineChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
+                datasets: [
+                  {
+                    label: '投稿した本の数',
+                    data: [
+                      <%= @user.books.created_days_ago(6).count %>,
+                      <%= @user.books.created_days_ago(5).count %>,
+                      <%= @user.books.created_days_ago(4).count %>,
+                      <%= @user.books.created_days_ago(3).count %>,
+                      <%= @user.books.created_days_ago(2).count %>,
+                      <%= @user.books.created_days_ago(1).count %>,
+                      <%= @user.books.created_today.count %>
+                    ],
+                    borderColor: "rgba(0,0,255,1)",
+                    backgroundColor: "rgba(0,0,0,0)",
+                    tension: 0.4
+                  }
+                ],
+              },
+              options: {
+                title: {
+                  display: true,
+                  text: '7日間の投稿数の比較'
                 },
-                options: {
-                  title: {
-                    display: true,
-                    text: '7日間の投稿数の比較'
+                responsive: true,
+                scales: {
+                  y:{
+                    suggestedMin: 0,
+                    suggestedMax: 10
                   },
-                  responsive: true,
-                  scales: {
-                    y:{
-                      suggestedMin: 0,
-                      suggestedMax: 10
-                    },
-                    x:{
-                      stacked: true
-                    },
+                  x:{
+                    stacked: true
                   },
-                }
-              });
+                },
+              }
             });
-          </script>
+          });
+        </script>
 
     </div>
   </div>
