@@ -4,12 +4,15 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
+// chart.jsでコメントアウト
+// import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-//追加
+
+//追加したが、Ratyでコメントアウト
 // import $ from 'jquery';
 // import "jquery"
+
 import "popper.js"
 import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all';
@@ -20,7 +23,8 @@ import "../stylesheets/about"
 import "../stylesheets/pagetop"
 
 Rails.start()
-Turbolinks.start()
+// chart.jsでコメントアウト
+// Turbolinks.start()
 ActiveStorage.start()
 
 window.$ = window.jQuery = require('jquery');
