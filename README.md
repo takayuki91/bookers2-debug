@@ -1,24 +1,8 @@
-# README
+# bookers2-debug
+- DMMWEBCAMPのカリキュラム
+- 応用課題3〜6 いいね機能、フォロー機能、検索機能、非同期通信機能
+- 応用課題7a〜9a SNS機能
+- 応用課題7b〜9b 記録機能
+- 応用課題7c〜9c コミュニティ機能
+- 応用課題7d〜9d レビュー機能
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
